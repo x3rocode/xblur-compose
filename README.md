@@ -14,7 +14,9 @@
 <br>
 
 ## :movie_camera: Look how works
+<p align="center"><img src="https://user-images.githubusercontent.com/51151970/210706577-6e88ab9d-9f1c-4593-a338-547a9bfc62b0.png" width="50%"></img></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/51151970/210678545-aa9103c1-d3f5-4c7d-a0ee-335fda75d8cb.gif" width="50%"></img></p>
+
 
 https://user-images.githubusercontent.com/51151970/210694618-5910577f-54fc-40cd-9a82-263653fb8fff.mp4
 
