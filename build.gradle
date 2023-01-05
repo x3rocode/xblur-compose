@@ -2,6 +2,9 @@ buildscript {
     ext {
         compose_ui_version = '1.4.0-alpha03'
     }
+    dependencies {
+        classpath "com.github.dcendents:android-maven-gradle-plugin:2.1"
+    }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     id 'com.android.application' version '7.3.1' apply false
