@@ -57,7 +57,7 @@ BlurDialog(
 
 ## :fire: Feature
 
-- backgroundColor : You can mix any color you want.
+- backgroundColor : You can mix ANY COLOR you want.
 <br>
 
 |backgroundColor|sample|
@@ -69,7 +69,7 @@ BlurDialog(
 |backgroundColor = Color.Red|<img src="https://user-images.githubusercontent.com/51151970/210685073-9e91ae87-a373-4664-91dd-a5331f5111f8.png"/>|
 <br>
 
-- backgroundColorAlpha : You can set background color alpha.
+- backgroundColorAlpha : You can set background color ALPHA.
 <br>
 
 |backgroundColorAlpha|sample|
@@ -79,7 +79,7 @@ BlurDialog(
 |backgroundColorAlpha = 1.0f|<img src="https://user-images.githubusercontent.com/51151970/210685954-1dea3c22-36be-429d-814e-2777cfcb7de0.png"/>|
 <br>
 
-- dialogDimAmount : set this if you want dark behind dialog.
+- dialogDimAmount : set this if you want DARK BEHIND dialog.
 <br>
 
 |dialogDimAmount = 0.0f|dialogDimAmount = 0.5f|dialogDimAmount = 0.0f|
@@ -87,7 +87,7 @@ BlurDialog(
 |<img src="https://user-images.githubusercontent.com/51151970/210686408-75080344-5874-47ec-8ede-a464bb5f90a7.png"  width="70%"/>|<img src="https://user-images.githubusercontent.com/51151970/210686490-2b3c23d7-034f-4652-84e1-4ce6ed6991ef.png"  width="70%"/>|<img src="https://user-images.githubusercontent.com/51151970/210686602-b8d4c2bc-8427-4fc6-93ea-bbb1b0a408bf.png"  width="70%"/>|
 <br>
 
-- dialogBehindBlurRadius : blur behind dialog
+- dialogBehindBlurRadius : BLUR BEHIND dialog
 <br>
 
 |dialogBehindBlurRadius = 0|dialogBehindBlurRadius = 100|
