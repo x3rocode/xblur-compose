@@ -1,3 +1,6 @@
+<p align="center"><img src="https://user-images.githubusercontent.com/51151970/217253011-5fc3c4b8-b427-482d-891f-e77bd36db817.png" width="30%"></img></p>
+
+
 # <p align="center">xBlur</p>
 <p align="center">
 <img alt="api" src="https://img.shields.io/badge/API-33%2B-green?logo=android"/>
@@ -6,9 +9,13 @@
 <img alt="api" src="https://img.shields.io/badge/API-33%2B-green?logo=android"/>
 <img alt="api" src="https://img.shields.io/badge/API-33%2B-green?logo=android"/>
 </p>
+
+
+
+
 <p align="center">:cloud: xBlur is Realtime iOS-like blur for Android Compose :cloud:</p>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/51151970/210677532-58654512-5f23-40c3-8b66-ed0fcad869a6.png" width="80%"></img></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/51151970/210677532-58654512-5f23-40c3-8b66-ed0fcad869a6.png" width="70%"></img></p>
 
 
 <br>
