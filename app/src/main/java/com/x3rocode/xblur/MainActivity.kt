@@ -55,12 +55,13 @@ fun Content(){
             //here is blur dialog!!!!!!!!!!!!!!!!!
             BlurDialog(
                 content = { DialogContent { openDialog = false } },
-                blurRadius = 250,
+                blurRadius = 50,
                 onDismiss = { openDialog = false },
                 size = IntOffset(280,160),
                 shape = RoundedCornerShape(30.dp),
                 backgroundColor = Color.White,
-                backgroundColorAlpha = 0.4f,
+                backgroundColorAlpha = 0.3f,
+                isRealtime = false,
                 dialogDimAmount = 0.3f,
             )
         }

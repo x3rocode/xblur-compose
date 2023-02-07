@@ -8,6 +8,7 @@ import android.graphics.Rect
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.PixelCopy
 import android.view.View
 import android.view.Window
@@ -22,10 +23,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.view.doOnLayout
 import androidx.core.view.drawToBitmap
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.mapNotNull
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.*
 import java.io.File
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -55,8 +53,9 @@ private inline fun ComposeView.applyCapturability(
     setContent {
         content()
         LaunchedEffect(controller, onCaptured) {
+
             controller.captureRequests
-                .mapNotNull { config -> drawToBitmapPostLaidOut(context, config) }
+                .map { config -> drawToBitmapPostLaidOut(context, config) }
                 .onEach { bitmap -> onCaptured(bitmap.asImageBitmap(), null) }
                 .catch { error -> onCaptured(null, error) }
                 .launchIn(this)
@@ -65,24 +64,21 @@ private inline fun ComposeView.applyCapturability(
 }
 
 suspend fun View.drawToBitmapPostLaidOut(context: Context, config: Bitmap.Config): Bitmap {
-    return suspendCoroutine { continuation ->
-        doOnLayout { view ->
-            try {
-                continuation.resume(view.drawToBitmap(config))
-            } catch (e: IllegalArgumentException) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    val window = context.findActivity().window
 
-                    drawBitmapWithPixelCopy(
-                        view = view,
-                        window = window,
-                        config = config,
-                        onDrawn = { bitmap -> continuation.resume(bitmap) },
-                        onError = { error -> continuation.resumeWithException(error) }
-                    )
-                } else {
-                    continuation.resumeWithException(e)
-                }
+    return suspendCoroutine { continuation ->
+
+        doOnLayout { view ->
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val window = context.findActivity().window
+
+                drawBitmapWithPixelCopy(
+                    view = view,
+                    window = window,
+                    config = config,
+                    onDrawn = { bitmap -> continuation.resume(bitmap) },
+                    onError = { error -> continuation.resumeWithException(error) }
+                )
             }
         }
     }
@@ -111,7 +107,6 @@ fun drawBitmapWithPixelCopy(
 
     val (x, y) = IntArray(2).apply { view.getLocationInWindow(this) }
     val rect = Rect(x, y, x + width, y + height)
-
     PixelCopy.request(
         window,
         rect,
@@ -119,6 +114,7 @@ fun drawBitmapWithPixelCopy(
         { copyResult ->
             if (copyResult == PixelCopy.SUCCESS) {
                 onDrawn(bitmap)
+
             } else {
                 onError(RuntimeException("Failed to draw bitmap"))
             }

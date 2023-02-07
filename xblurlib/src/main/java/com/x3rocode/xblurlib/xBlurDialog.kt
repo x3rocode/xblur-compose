@@ -63,6 +63,7 @@ fun BlurDialog(
     backgroundColorAlpha: Float = 0.4f,
     dialogDimAmount: Float? = null,
     dialogBehindBlurRadius: Int = 0,
+    isRealtime: Boolean = true,
     content: @Composable () -> Unit,
 ){
     val captureController = rememberCaptureController()
@@ -79,14 +80,14 @@ fun BlurDialog(
         do{
             captureController.capture()
             delay(30)
-        }while (true)
+        }while (isRealtime)
     }
 
     Box(modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center){
         Capturable(
             controller = captureController,
-            onCaptured = { b, t ->
+            onCaptured = { b, _ ->
                 b?.let {
                     if(it.asAndroidBitmap().sameAs(bitmap?.asAndroidBitmap()).not()){
                         bitmap= it
