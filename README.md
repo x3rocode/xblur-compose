@@ -49,7 +49,8 @@ BlurDialog(
       backgroundColor = Color.White,          //mixing color with dialog
       backgroundColorAlpha = 0.4f,            //mixing color alpha
       dialogDimAmount = 0.3f,                 //set this if you want dark behind dialog.
-      dialogBehindBlurRadius = 100            //blur behind dialog
+      dialogBehindBlurRadius = 100,           //blur behind dialog
+      isRealtime = true                       //Realtime capture or not. false = only the first time the dialog is captured when it opens.
  ){
   //Some Contents inside dialog     
  }
