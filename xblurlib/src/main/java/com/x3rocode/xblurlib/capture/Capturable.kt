@@ -6,6 +6,7 @@ import android.content.ContextWrapper
 import android.graphics.Bitmap
 import android.graphics.Rect
 import android.os.Build
+import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -17,10 +18,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.findViewTreeCompositionContext
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.view.allViews
+import androidx.core.view.doOnAttach
 import androidx.core.view.doOnLayout
 import androidx.core.view.drawToBitmap
 import kotlinx.coroutines.flow.*
@@ -69,6 +74,7 @@ suspend fun View.drawToBitmapPostLaidOut(context: Context, config: Bitmap.Config
 
         doOnLayout { view ->
 
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val window = context.findActivity().window
 
@@ -85,12 +91,6 @@ suspend fun View.drawToBitmapPostLaidOut(context: Context, config: Bitmap.Config
 }
 
 
-fun File.writeBitmap(bitmap: Bitmap, format: Bitmap.CompressFormat, quality: Int) {
-    outputStream().use { out ->
-        bitmap.compress(format, quality, out)
-        out.flush()
-    }
-}
 
 @RequiresApi(Build.VERSION_CODES.O)
 fun drawBitmapWithPixelCopy(
@@ -131,4 +131,12 @@ internal fun Context.findActivity(): Activity {
         context = context.baseContext
     }
     throw IllegalStateException("Unable to retrieve Activity from the current context")
+}
+
+
+fun File.writeBitmap(bitmap: Bitmap, format: Bitmap.CompressFormat, quality: Int) {
+    outputStream().use { out ->
+        bitmap.compress(format, quality, out)
+        out.flush()
+    }
 }
