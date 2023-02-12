@@ -151,7 +151,7 @@ fun BlurDialog(
     content: @Composable () -> Unit,
 ){
     val captureController = rememberCaptureController()
-    val scaffoldState = rememberScaffoldState()
+
     var bitmap by remember { mutableStateOf(ImageBitmap(size.x, size.y)) }
     var dialogPos by remember { mutableStateOf(Offset.Zero) }
     val shader = RuntimeShader(GET_BEHIND_CANVAS)

@@ -11,8 +11,8 @@ class CaptureController internal constructor() {
 
     private val _captureRequests = MutableSharedFlow<Bitmap.Config>(replay = 1)
     internal val captureRequests = _captureRequests.asSharedFlow()
-    fun capture(config: Bitmap.Config = Bitmap.Config.ARGB_8888) {
-        _captureRequests.tryEmit(config)
+    fun capture() {
+        _captureRequests.tryEmit(Bitmap.Config.ARGB_8888)
     }
 }
 

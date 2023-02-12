@@ -73,9 +73,9 @@ suspend fun View.drawToBitmapPostLaidOut(context: Context, config: Bitmap.Config
     return suspendCoroutine { continuation ->
 
         doOnLayout { view ->
-
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            try {
+                continuation.resume(view.drawToBitmap(config))
+            } catch (e: IllegalArgumentException) {
                 val window = context.findActivity().window
 
                 drawBitmapWithPixelCopy(
