@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">xblur</string>
+    <string name="text_home">home</string>
+    <string name="text_favorite">favorite</string>
+    <string name="text_setting">setting</string>
+    <string name="text_mypage">mypage</string>
 </resources>

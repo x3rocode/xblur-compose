@@ -1,6 +1,7 @@
 buildscript {
     ext {
         compose_ui_version = '1.4.0-alpha03'
+        nav_version = "2.5.3"
     }
     dependencies {
         classpath "com.github.dcendents:android-maven-gradle-plugin:2.1"

@@ -160,8 +160,6 @@ fun BlurDialog(
         this.shader = shader
     }
 
-
-
     Box(modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center){
         Capturable(
